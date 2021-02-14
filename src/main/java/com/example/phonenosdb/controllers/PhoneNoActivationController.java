@@ -31,7 +31,7 @@ public class PhoneNoActivationController {
 
         logger.info("{} [Request.IN] [Activate.PhoneNo] Activate Request for PhoneNo: {}",
                 scope.getLogPrefix(), phoneNo);
-        boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, false);
+        boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, true);
         logger.info("{} [Response.Out] [Activate.PhoneNo] PhoneNo: {} Activate Op Status: {}",
                 scope.getLogPrefix(), phoneNo, status);
 
