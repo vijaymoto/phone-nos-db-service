@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1")
 public class PhoneNoActivationController {
-
-    private Logger logger = LoggerFactory.getLogger(PhoneNoSearchController.class);
+    private Logger logger = LoggerFactory.getLogger(PhoneNoActivationController.class);
 
     @Autowired
     CustomRequestScope scope;
