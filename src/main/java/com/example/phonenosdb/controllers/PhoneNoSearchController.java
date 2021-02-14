@@ -29,7 +29,7 @@ public class PhoneNoSearchController {
                     String requestId,
             @RequestParam(name = "page_no", required = false, defaultValue = "0")
                     Integer pageNo,
-            @RequestParam(name = "no_of_records", required = false, defaultValue = "100")
+            @RequestParam(name = "no_of_records", required = false, defaultValue = "10")
                     Integer noOfRecords) {
         scope.init(requestId);
         logger.info("{} [Request.IN] [FindAll.PhoneNos] Request params pageNo: {}, noOfRecords: {}",
@@ -49,7 +49,7 @@ public class PhoneNoSearchController {
             @PathVariable @NotNull String customerId,
             @RequestParam(name = "page_no", required = false, defaultValue = "0")
                     Integer pageNo,
-            @RequestParam(name = "no_of_records", required = false, defaultValue = "100")
+            @RequestParam(name = "no_of_records", required = false, defaultValue = "10")
                     Integer noOfRecords) {
         scope.init(requestId);
         logger.info("{} [Request.IN] [FindAll.Customer.PhoneNos] Request params customerId: {}, pageNo: {}, noOfRecords: {}",
