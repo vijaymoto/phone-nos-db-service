@@ -6,6 +6,7 @@ import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,14 +30,15 @@ public class PhoneNoActivationController {
     ) {
         scope.init(requestId);
 
-        logger.info("{} [Request.IN] [Activate.PhoneNo] Activate Request for PhoneNo: {}",
+        logger.info("{} [Request.IN] [Activate.PhoneNo] PhoneNo: {} Activate Request received",
                 scope.getLogPrefix(), phoneNo);
         boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, true);
         logger.info("{} [Response.Out] [Activate.PhoneNo] PhoneNo: {} Activate Op Status: {}",
                 scope.getLogPrefix(), phoneNo, status);
 
         String resp = String.format("Phone No: %s Activation: %s", phoneNo, getOpStatus(status));
-        return ResponseEntity.ok(resp);
+        return status ? ResponseEntity.ok(resp) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resp);
     }
 
 
@@ -48,14 +50,15 @@ public class PhoneNoActivationController {
     ) {
         scope.init(requestId);
 
-        logger.info("{} [Request.IN] [Deactivate.PhoneNo] Deactivate Request for PhoneNo: {}",
+        logger.info("{} [Request.IN] [Deactivate.PhoneNo] PhoneNo: {} Deactivate Request received",
                 scope.getLogPrefix(), phoneNo);
         boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, false);
         logger.info("{} [Response.Out] [Deactivate.PhoneNo] PhoneNo: {} Deactivate Op Status: {}",
                 scope.getLogPrefix(), phoneNo, status);
 
         String resp = String.format("Phone No: %s Deactivation: %s", phoneNo, getOpStatus(status));
-        return ResponseEntity.ok(resp);
+        return status ? ResponseEntity.ok(resp) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resp);
     }
 
 
