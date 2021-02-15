@@ -36,7 +36,8 @@ public class PhoneNoSearchController {
                 scope.getLogPrefix(), pageNo, noOfRecords);
 
         List<PhoneNoData> phoneNoDataList = phoneNoDataService.findAllPhoneNos(pageNo, noOfRecords);
-        logger.info("{} [Response.Out] [FindAll.PhoneNos] PhoneNo Data List: {}", requestId, phoneNoDataList);
+        logger.info("{} [Response.OUT] [FindAll.PhoneNos] PhoneNo Data List: {}",
+                scope.getLogPrefix(), phoneNoDataList);
 
         return ResponseEntity.ok(phoneNoDataList);
     }
@@ -56,7 +57,7 @@ public class PhoneNoSearchController {
                 scope.getLogPrefix(), customerId, pageNo, noOfRecords);
 
         List<PhoneNoData> phoneNoDataList = phoneNoDataService.findAllCustomerPhoneNos(customerId, pageNo, noOfRecords);
-        logger.info("{} [Request.Out] [FindAll.Customer.PhoneNos] PhoneNo Data List: {}",
+        logger.info("{} [Response.OUT] [FindAll.Customer.PhoneNos] PhoneNo Data List: {}",
                 scope.getLogPrefix(), phoneNoDataList);
 
         return ResponseEntity.ok(phoneNoDataList);

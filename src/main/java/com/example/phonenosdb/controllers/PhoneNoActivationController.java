@@ -32,7 +32,7 @@ public class PhoneNoActivationController {
         logger.info("{} [Request.IN] [Activate.PhoneNo] PhoneNo: {} Activate Request received",
                 scope.getLogPrefix(), phoneNo);
         boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, true);
-        logger.info("{} [Response.Out] [Activate.PhoneNo] PhoneNo: {} Activate Op Status: {}",
+        logger.info("{} [Response.OUT] [Activate.PhoneNo] PhoneNo: {} Activate Op Status: {}",
                 scope.getLogPrefix(), phoneNo, status);
 
         String resp = String.format("Phone No: %s Activation: %s", phoneNo, getOpStatus(status));
@@ -52,7 +52,7 @@ public class PhoneNoActivationController {
         logger.info("{} [Request.IN] [Deactivate.PhoneNo] PhoneNo: {} Deactivate Request received",
                 scope.getLogPrefix(), phoneNo);
         boolean status = phoneNoDataService.updatePhoneNoActiveStatus(phoneNo, false);
-        logger.info("{} [Response.Out] [Deactivate.PhoneNo] PhoneNo: {} Deactivate Op Status: {}",
+        logger.info("{} [Response.OUT] [Deactivate.PhoneNo] PhoneNo: {} Deactivate Op Status: {}",
                 scope.getLogPrefix(), phoneNo, status);
 
         String resp = String.format("Phone No: %s Deactivation: %s", phoneNo, getOpStatus(status));

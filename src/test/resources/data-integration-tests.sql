@@ -13,5 +13,6 @@ INSERT INTO phone_nos (phone_no, customer_id, is_active) VALUES
   ('0999912342', 'gbc', true),
   ('0999912343', 'gbc', true),
   ('0999912344', 'gbc', true),
-  ('0999912345', 'hbc', true)
+  ('0999912345', 'hbc', true),
+  ('0999912346', 'ibc', true)
   ;

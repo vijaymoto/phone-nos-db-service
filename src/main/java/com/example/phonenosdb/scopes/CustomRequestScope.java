@@ -21,7 +21,7 @@ public class CustomRequestScope {
         if (!StringUtils.hasText(requestId))
             requestId = UUID.randomUUID().toString();
         this.requestId = requestId;
-        this.logPrefix = String.format("RequestId: %s]", requestId);
+        this.logPrefix = String.format("[RequestId: %s]", requestId);
     }
 
 }
