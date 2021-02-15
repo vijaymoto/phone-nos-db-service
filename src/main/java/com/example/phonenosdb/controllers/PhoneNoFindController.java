@@ -3,7 +3,6 @@ package com.example.phonenosdb.controllers;
 import com.example.phonenosdb.entities.PhoneNoData;
 import com.example.phonenosdb.scopes.CustomRequestScope;
 import com.example.phonenosdb.services.PhoneNoDataService;
-import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class PhoneNoFindController {
     public ResponseEntity findAllCustomerPhoneNos(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
-            @PathVariable @NotNull String customerId,
+            @PathVariable(required = true) String customerId,
             @RequestParam(name = "page_no", required = false, defaultValue = "0")
                     Integer pageNo,
             @RequestParam(name = "no_of_records", required = false, defaultValue = "10")

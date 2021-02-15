@@ -2,7 +2,6 @@ package com.example.phonenosdb.controllers;
 
 import com.example.phonenosdb.scopes.CustomRequestScope;
 import com.example.phonenosdb.services.PhoneNoDataService;
-import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class PhoneNoActivationController {
     public ResponseEntity activatePhoneNo(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
-            @PathVariable @NotNull String phoneNo
+            @PathVariable(required = true) String phoneNo
     ) {
         scope.init(requestId);
 
@@ -45,7 +44,7 @@ public class PhoneNoActivationController {
     public ResponseEntity deactivatePhoneNo(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
-            @PathVariable @NotNull String phoneNo
+            @PathVariable(required = true) String phoneNo
     ) {
         scope.init(requestId);
 

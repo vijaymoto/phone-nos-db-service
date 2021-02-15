@@ -11,11 +11,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Optional;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -44,19 +43,19 @@ public class PhoneNoActivationApiIntegrationTests {
         mockMvc.perform(post(String.format(PHONENOS_ACTIVATE_URL_PATH, "0999911111")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt1 = phoneNoDataRepository.findById("0999911111");
-        assertEquals(phoneNoDataOpt1.get().getIsActive(), true);
+        assertEquals(true, phoneNoDataOpt1.get().getIsActive());
 
         // activate a phone no. which was deactivated previously - test 1
         mockMvc.perform(post(String.format(PHONENOS_ACTIVATE_URL_PATH, "0999933333")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt2 = phoneNoDataRepository.findById("0999933333");
-        assertEquals(phoneNoDataOpt2.get().getIsActive(), true);
+        assertEquals(true, phoneNoDataOpt2.get().getIsActive());
 
         // activate a phone no. which was deactivated previously - test 2
         mockMvc.perform(post(String.format(PHONENOS_ACTIVATE_URL_PATH, "0999912341")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt3 = phoneNoDataRepository.findById("0999912341");
-        assertEquals(phoneNoDataOpt3.get().getIsActive(), true);
+        assertEquals( true, phoneNoDataOpt3.get().getIsActive());
 
         // activate a non-existing phone no.
         mockMvc.perform(post(String.format(PHONENOS_ACTIVATE_URL_PATH, "0888811111")))
@@ -71,20 +70,20 @@ public class PhoneNoActivationApiIntegrationTests {
         mockMvc.perform(post(String.format(PHONENOS_DEACTIVATE_URL_PATH, "0999966666")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt1 = phoneNoDataRepository.findById("0999966666");
-        assertEquals(phoneNoDataOpt1.get().getIsActive(), false);
+        assertEquals( false, phoneNoDataOpt1.get().getIsActive());
 
 
         // deactivate a phone no. which was previously activated - test 1
         mockMvc.perform(post(String.format(PHONENOS_DEACTIVATE_URL_PATH, "0999944444")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt2 = phoneNoDataRepository.findById("0999944444");
-        assertEquals(phoneNoDataOpt2.get().getIsActive(), false);
+        assertEquals(false, phoneNoDataOpt2.get().getIsActive());
 
         // deactivate a phone no. which was previously previously - test 2
         mockMvc.perform(post(String.format(PHONENOS_DEACTIVATE_URL_PATH, "0999912343")))
                 .andExpect(status().isOk());
         Optional<PhoneNoData> phoneNoDataOpt3 = phoneNoDataRepository.findById("0999912343");
-        assertEquals(phoneNoDataOpt3.get().getIsActive(), false);
+        assertEquals(false, phoneNoDataOpt3.get().getIsActive());
 
 
         // deactivate a non-existing phone no.

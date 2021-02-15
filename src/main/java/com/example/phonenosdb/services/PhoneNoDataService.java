@@ -2,8 +2,6 @@ package com.example.phonenosdb.services;
 
 import com.example.phonenosdb.entities.PhoneNoData;
 import com.example.phonenosdb.repositories.PhoneNoDataRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +13,6 @@ import java.util.List;
 
 @Service
 public class PhoneNoDataService {
-    private Logger logger = LoggerFactory.getLogger(PhoneNoDataService.class);
 
     @Autowired
     PhoneNoDataRepository phoneNoDataRepository;
@@ -25,9 +22,7 @@ public class PhoneNoDataService {
         Pageable pageable = PageRequest.of(pageNo, noOfRecords);
 
         Page<PhoneNoData> phoneNoDataPage = phoneNoDataRepository.findAll(pageable);
-        List<PhoneNoData> phoneNoEntityList = phoneNoDataPage.getContent();
-
-        return phoneNoEntityList;
+        return phoneNoDataPage.getContent();
     }
 
 
@@ -35,16 +30,14 @@ public class PhoneNoDataService {
         Pageable pageable = PageRequest.of(pageNo, noOfRecords);
 
         Page<PhoneNoData> phoneNoDataPage = phoneNoDataRepository.findAllByCustomerIdIs(customerId, pageable);
-        List<PhoneNoData> phoneNoEntityList = phoneNoDataPage.getContent();
-
-        return phoneNoEntityList;
+        return phoneNoDataPage.getContent();
     }
 
 
     @Transactional
     public boolean updatePhoneNoActiveStatus(String phoneNo, boolean isActive) {
         int status = phoneNoDataRepository.updateIsActive(phoneNo, isActive);
-        return status == 0 ? false : true;
+        return status != 0;
     }
 
 }
