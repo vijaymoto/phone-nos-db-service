@@ -1,6 +1,5 @@
 package com.example.phonenosdb.services;
 
-import com.example.phonenosdb.controllers.PhoneNoSearchController;
 import com.example.phonenosdb.entities.PhoneNoData;
 import com.example.phonenosdb.repositories.PhoneNoDataRepository;
 import org.slf4j.Logger;

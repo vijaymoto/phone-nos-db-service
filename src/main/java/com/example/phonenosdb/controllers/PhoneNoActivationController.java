@@ -21,7 +21,7 @@ public class PhoneNoActivationController {
     @Autowired
     PhoneNoDataService phoneNoDataService;
 
-    @PostMapping("/phone_nos/activate/{phoneNo}")
+    @PostMapping("/phone_nos/{phoneNo}/activate")
     public ResponseEntity activatePhoneNo(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
@@ -41,7 +41,7 @@ public class PhoneNoActivationController {
     }
 
 
-    @PostMapping("/phone_nos/deactivate/{phoneNo}")
+    @PostMapping("/phone_nos/{phoneNo}/deactivate")
     public ResponseEntity deactivatePhoneNo(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,

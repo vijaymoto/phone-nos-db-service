@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-public class PhoneNoSearchController {
-    private Logger logger = LoggerFactory.getLogger(PhoneNoSearchController.class);
+public class PhoneNoFindController {
+    private Logger logger = LoggerFactory.getLogger(PhoneNoFindController.class);
 
     @Autowired
     CustomRequestScope scope;
@@ -23,7 +23,7 @@ public class PhoneNoSearchController {
     @Autowired
     PhoneNoDataService phoneNoDataService;
 
-    @GetMapping("/phone_nos/all")
+    @GetMapping("/phone_nos")
     public ResponseEntity findAllPhoneNos(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
@@ -43,7 +43,7 @@ public class PhoneNoSearchController {
     }
 
 
-    @GetMapping("/customer/phone_nos/{customerId}/all")
+    @GetMapping("/customer/{customerId}/phone_nos")
     public ResponseEntity findAllCustomerPhoneNos(
             @RequestHeader(name = "request_id", required = false)
                     String requestId,
